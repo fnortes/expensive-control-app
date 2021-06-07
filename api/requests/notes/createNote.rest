@@ -1,0 +1,24 @@
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODZjMWQyZTVmYzA2MDZlMmI5NjVhNyIsInVzZXJuYW1lIjoiZm5vcnRlcyIsImlhdCI6MTYxOTY5MzU5MX0.LU_Mqsds-jw4aozpep9jdCuO0Io9ryzSNzVqaEKZi4g
+
+{
+  "content": "Nota creada desde Rest Client 2",
+  "important": true
+}
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "content": "Nota creada desde Rest Client"
+}
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+  "important": true
+}

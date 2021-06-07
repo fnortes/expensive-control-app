@@ -1,0 +1,44 @@
+{
+  "name": "expensive-control-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Application to control personal expenses",
+  "keywords": [],
+  "author": "Francisco Manuel Nortes Belmonte",
+  "license": "ISC",
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "engines": {
+    "npm": "7.9.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write",
+    "prepare": "husky install",
+    "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=app",
+    "start": "npm run build && npm run start --workspace=api",
+    "start:dev": "npm run build && npm run start:dev --workspace=api"
+  },
+  "devDependencies": {
+    "eslint": "7.24.0",
+    "eslint-config-prettier": "8.2.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-plugin-cypress": "2.11.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.3.1",
+    "eslint-plugin-react": "7.23.2",
+    "husky": "6.0.0",
+    "lint-staged": "10.5.4",
+    "prettier": "2.2.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  }
+}
