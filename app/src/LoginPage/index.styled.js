@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Avatar, Button, Grid, Paper } from '@material-ui/core'
+import { Avatar, Grid, Paper } from '@material-ui/core'
 
 export const RootStyled = styled(Grid)`
   height: 100vh;
@@ -17,10 +17,16 @@ export const ImageStyled = styled(Grid)`
 `
 
 export const PaperStyled = styled(Paper)`
-  padding: ${({ theme }) => theme.spacing(8, 4)};
+  padding: ${({ theme }) => theme.spacing(4, 4)};
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+export const LogoStyled = styled.img`
+  display: block;
+  width: 50vw;
+  max-width: 150px;
 `
 
 export const AvatarStyled = styled(Avatar)`
@@ -28,10 +34,9 @@ export const AvatarStyled = styled(Avatar)`
   background-color: ${({ theme }) => theme.palette.secondary.main};
 `
 
-export const FormStyled = styled.form`
-  margin-top: ${({ theme }) => theme.spacing(1)}px;
-`
-
-export const SubmitStyled = styled(Button)`
-  margin: ${({ theme }) => theme.spacing(3, 0, 2)};
+export const GridLinkStyled = styled(Grid)`
+  text-align: center;
+  ${({ theme }) => theme.breakpoints.up('sm')} {
+    text-align: left;
+  }
 `

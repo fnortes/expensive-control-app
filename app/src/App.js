@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect, useState } from 'react'
-import { Redirect, Route, Switch, useLocation } from 'wouter'
+import React, { Suspense } from 'react'
+import { Route, Switch } from 'wouter'
 import { ThemeProvider } from 'styled-components'
 import {
   StylesProvider,
@@ -9,36 +9,23 @@ import { customTheme } from 'styles'
 import Spinner from 'commons/components/Spinner'
 
 // Load Home page in lazy mode.
-const LazyHome = React.lazy(() => import('pages/HomePage'))
+const LazyHome = React.lazy(() => import('HomePage'))
 
 // Load login page in lazy mode.
-const LazyLogin = React.lazy(() => import('pages/LoginPage'))
+const LazyLogin = React.lazy(() => import('LoginPage'))
 
 // Load error page in lazy mode.
-const LazyError = React.lazy(() => import('pages/ErrorPage'))
+const LazyError = React.lazy(() => import('ErrorPage'))
 
 export default function App() {
-  const [location] = useLocation()
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedNoteAppUser')
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
-      console.log(user)
-      // noteService.setToken(user.token)
-    }
-  }, [])
-
-  if (user === null && location !== '/login') return <Redirect to="/login" />
-  if (user !== null && location === '/login') return <Redirect to="/" />
+  console.log('Renderiza la APP')
 
   return (
     <MuiThemeProvider theme={customTheme}>
       <ThemeProvider theme={customTheme}>
         <StylesProvider injectFirst>
           <Suspense fallback={<Spinner loading />}>
+            <Spinner />
             <Switch>
               <Route component={LazyHome} path="/" />
               <Route component={LazyLogin} path="/login" />

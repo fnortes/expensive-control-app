@@ -8,19 +8,16 @@ notesRouter.get('/', async (req, res) => {
     username: 1,
     name: 1
   })
-
   res.json(notes)
 })
 
 notesRouter.get('/:id', async (req, res, next) => {
   const { id } = req.params
-
   try {
     const result = await Note.findById(id).populate('user', {
       username: 1,
       name: 1
     })
-
     if (result === null) {
       next()
     } else {
