@@ -5,6 +5,7 @@ import {
   StylesProvider,
   ThemeProvider as MuiThemeProvider
 } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import { customTheme } from 'styles'
 import Spinner from 'commons/components/Spinner'
 
@@ -24,6 +25,7 @@ export default function App() {
     <MuiThemeProvider theme={customTheme}>
       <ThemeProvider theme={customTheme}>
         <StylesProvider injectFirst>
+          <CssBaseline />
           <Suspense fallback={<Spinner loading />}>
             <Spinner />
             <Switch>

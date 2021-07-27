@@ -13,6 +13,13 @@ export const customTheme = createMuiTheme({
       main: 'rgb(165, 70, 43)',
       dark: 'rgb(129, 65, 45)'
     },
+    custom: {
+      white: {
+        light: 'rgba(255, 255, 255, 0.15)',
+        main: 'rgba(255, 255, 255, 0.25)',
+        dark: 'rgba(255, 255, 255), 1'
+      }
+    },
     shape: {
       circle: '50%'
     }

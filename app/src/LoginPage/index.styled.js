@@ -17,7 +17,7 @@ export const ImageStyled = styled(Grid)`
 `
 
 export const PaperStyled = styled(Paper)`
-  padding: ${({ theme }) => theme.spacing(4, 4)};
+  padding: ${({ theme }) => theme.spacing(4, 4)}px;
   display: flex;
   flex-direction: column;
   align-items: center;
