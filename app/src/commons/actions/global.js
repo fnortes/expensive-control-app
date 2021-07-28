@@ -26,3 +26,41 @@ export const loginFailureAction = (error, dispatch) => {
     payload: error
   })
 }
+
+export const toggleMenuAction = (payload, dispatch) => {
+  dispatch({
+    type: ACTIONS.TOGGLE_MENU,
+    payload
+  })
+}
+
+export const setUserMenuAnchorElAction = (payload, dispatch) => {
+  dispatch({
+    type: ACTIONS.UPDATE_USER_MENU_ANCHOR_EL,
+    payload
+  })
+}
+
+export const setUserMenuMobileAnchorElAction = (payload, dispatch) => {
+  dispatch({
+    type: ACTIONS.UPDATE_USER_MENU_MOBILE_ANCHOR_EL,
+    payload
+  })
+}
+
+export const setSelectedExpensiveControlAction = (payload, dispatch) => {
+  dispatch({
+    type: ACTIONS.UPDATE_SELECTED_EXPENSIVE_CONTROL_INDEX,
+    payload
+  })
+}
+
+export const setSelectedExpensiveControlAnchorElAction = (
+  payload,
+  dispatch
+) => {
+  dispatch({
+    type: ACTIONS.UPDATE_SELECTED_EXPENSIVE_CONTROL_ANCHOR_EL,
+    payload
+  })
+}

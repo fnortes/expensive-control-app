@@ -15,6 +15,42 @@ export const reducer = (state, action) => {
         loading: false,
         error: action.payload
       }
+    case ACTIONS.TOGGLE_MENU: {
+      const newState = { ...state }
+
+      newState.header.menu.isOpen = action.payload
+
+      return newState
+    }
+    case ACTIONS.UPDATE_USER_MENU_ANCHOR_EL: {
+      const newState = { ...state }
+
+      newState.header.userMenu.main.anchorEl = action.payload
+
+      return newState
+    }
+    case ACTIONS.UPDATE_USER_MENU_MOBILE_ANCHOR_EL: {
+      const newState = { ...state }
+
+      newState.header.userMenu.mobile.anchorEl = action.payload
+
+      return newState
+    }
+    case ACTIONS.UPDATE_SELECTED_EXPENSIVE_CONTROL_INDEX: {
+      const newState = { ...state }
+
+      newState.header.selectedExpensiveControl.index = action.payload
+      newState.header.selectedExpensiveControl.anchorEl = null
+
+      return newState
+    }
+    case ACTIONS.UPDATE_SELECTED_EXPENSIVE_CONTROL_ANCHOR_EL: {
+      const newState = { ...state }
+
+      newState.header.selectedExpensiveControl.anchorEl = action.payload
+
+      return newState
+    }
     default:
       return state
   }

@@ -5,7 +5,12 @@ import {
   endLoadingAction,
   loginFailureAction,
   loginSuccessAction,
-  startLoadingAction
+  setSelectedExpensiveControlAction,
+  setSelectedExpensiveControlAnchorElAction,
+  setUserMenuAnchorElAction,
+  setUserMenuMobileAnchorElAction,
+  startLoadingAction,
+  toggleMenuAction
 } from 'commons/actions/global'
 import userService from 'LoginPage/services/user'
 import { INITIAL_STATE } from 'commons/constants/global'
@@ -30,6 +35,7 @@ export default function useGlobal() {
 
     setLocation('/')
   }
+
   const handleOnGetUserError = (errorMsg) => {
     loginFailureAction(errorMsg, dispatch)
 
@@ -62,5 +68,50 @@ export default function useGlobal() {
     }
   }
 
-  return { state, startLoading, login, createUser }
+  const toggleMenu = (open = false) => {
+    toggleMenuAction(open, dispatch)
+  }
+
+  const setUserMenuAnchorEl = (event) => {
+    setUserMenuAnchorElAction(event.currentTarget, dispatch)
+  }
+
+  const cleanUserMenuAnchorEl = () => {
+    setUserMenuAnchorElAction(null, dispatch)
+  }
+
+  const setUserMenuMobileAnchorEl = (event) => {
+    setUserMenuMobileAnchorElAction(event.currentTarget, dispatch)
+  }
+
+  const cleanUserMenuMobileAnchorEl = () => {
+    setUserMenuMobileAnchorElAction(null, dispatch)
+  }
+
+  const setSelectedExpensiveControl = (index) => {
+    setSelectedExpensiveControlAction(index, dispatch)
+  }
+
+  const setSelectedExpensiveControlAnchorEl = (event) => {
+    setSelectedExpensiveControlAnchorElAction(event.currentTarget, dispatch)
+  }
+
+  const cleanSelectedExpensiveControlAnchorEl = () => {
+    setSelectedExpensiveControlAnchorElAction(null, dispatch)
+  }
+
+  return {
+    state,
+    startLoading,
+    login,
+    createUser,
+    toggleMenu,
+    setUserMenuAnchorEl,
+    cleanUserMenuAnchorEl,
+    setUserMenuMobileAnchorEl,
+    cleanUserMenuMobileAnchorEl,
+    setSelectedExpensiveControl,
+    setSelectedExpensiveControlAnchorEl,
+    cleanSelectedExpensiveControlAnchorEl
+  }
 }

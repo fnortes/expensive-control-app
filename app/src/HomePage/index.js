@@ -1,14 +1,14 @@
 import React from 'react'
-import Header from 'commons/components/Header'
-import { MainWrapper } from './index.styled'
+import { Link as LinkRouter } from 'wouter'
+import { Link } from '@material-ui/core'
 
 export default function HomePage() {
   return (
-    <>
-      <Header />
-      <MainWrapper>
-        <div>Home page</div>
-      </MainWrapper>
-    </>
+    <div>
+      Home page{' '}
+      <LinkRouter to="/error">
+        <Link color="secondary">Error Page</Link>
+      </LinkRouter>
+    </div>
   )
 }

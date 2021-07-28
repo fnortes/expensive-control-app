@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
-export const customTheme = createMuiTheme({
+const globalTheme = createMuiTheme({
   palette: {
     type: 'light',
     primary: {
@@ -25,3 +25,16 @@ export const customTheme = createMuiTheme({
     }
   }
 })
+
+export const customTheme = createMuiTheme(
+  {
+    overrides: {
+      MuiListItemText: {
+        secondary: {
+          color: globalTheme.palette.custom.white.main
+        }
+      }
+    }
+  },
+  globalTheme
+)
