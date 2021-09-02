@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt')
 const loginRouter = require('express').Router()
 const User = require('../models/User')
-const buildToken = require('../helpers')
+const { buildToken } = require('../helpers')
 
 loginRouter.post('/', async (req, res) => {
   const { body } = req

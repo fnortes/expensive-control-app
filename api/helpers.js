@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const { PERMISSIONS } = require('./constants')
 
 const buildToken = ({ _id, name, email }) => {
   const userForToken = {
@@ -7,8 +8,8 @@ const buildToken = ({ _id, name, email }) => {
   }
 
   const token = jwt.sign(userForToken, process.env.SECRET, {
-    // expiresIn: 60 * 60 * 24 * 7
-    expiresIn: 20
+    expiresIn: 60 * 60 * 24 * 7
+    // expiresIn: 20
   })
 
   return {
@@ -18,4 +19,11 @@ const buildToken = ({ _id, name, email }) => {
   }
 }
 
-module.exports = buildToken
+const isValidEmail = (email) =>
+  /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.test(
+    email
+  )
+
+const isValidPermission = (permission) => PERMISSIONS.indexOf(permission) > -1
+
+module.exports = { buildToken, isValidEmail, isValidPermission }

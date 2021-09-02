@@ -7,13 +7,13 @@ const userSchema = new Schema({
     unique: true
   },
   name: String,
-  passwordHash: String
-  // notes: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: 'Note'
-  //   }
-  // ]
+  passwordHash: String,
+  expensiveControls: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'ExpensiveControl'
+    }
+  ]
 })
 
 userSchema.set('toJSON', {

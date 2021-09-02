@@ -1,0 +1,3 @@
+GET http://localhost:3001/api/expensiveControls/byUser
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzcyNmMzOGFmMzExMjI2ZmIxNjlmMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1MDY5NTYsImV4cCI6MTYzMDUwNjk3Nn0.miq7hsFxLq_nIcNTNLHCb8bMDqLWnODdL-GiXaSkxvw

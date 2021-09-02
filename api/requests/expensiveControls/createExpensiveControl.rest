@@ -1,0 +1,85 @@
+### OK With filled permissions array
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzA5Y2E5YTE3M2Y4MzhlMWMwZTZlMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1Nzc3MjQsImV4cCI6MTYzMTE4MjUyNH0.Nt5GFEL69PJ1qz1r6U_85meimpEyYrphFT4JqxoeWmc
+
+{
+  "name": "Mi control de gastos 11",
+  "permissions": [
+    {
+      "email": "abel.nortes@gmail.com",
+      "permission": "READ"
+    },
+    {
+      "email": "not.registered@gmail.com",
+      "permission": "READ_AND_WRITE"
+    }
+  ]
+}
+
+### OK without permissions array
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzA5Y2E5YTE3M2Y4MzhlMWMwZTZlMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1Nzc3MjQsImV4cCI6MTYzMTE4MjUyNH0.Nt5GFEL69PJ1qz1r6U_85meimpEyYrphFT4JqxoeWmc
+
+{
+  "name": "Mi control de gastos 1"
+}
+
+### OK With empty permissions array
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzcyNmMzOGFmMzExMjI2ZmIxNjlmMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1NjU4MDcsImV4cCI6MTYzMTE3MDYwN30.Jnn1OSlk13fAWHNxGYxz2mPmj1M6mcJyfNhEZ4KgXcY
+
+{
+  "name": "Mi control de gastos 5",
+  "permissions": []
+}
+
+### ERROR: Name is required
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzcyNmMzOGFmMzExMjI2ZmIxNjlmMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1NjU4MDcsImV4cCI6MTYzMTE3MDYwN30.Jnn1OSlk13fAWHNxGYxz2mPmj1M6mcJyfNhEZ4KgXcY
+
+{}
+
+### ERROR: Permission email is missing
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzcyNmMzOGFmMzExMjI2ZmIxNjlmMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1NjU4MDcsImV4cCI6MTYzMTE3MDYwN30.Jnn1OSlk13fAWHNxGYxz2mPmj1M6mcJyfNhEZ4KgXcY
+
+{
+  "name": "Mi control de gastos 6",
+  "permissions": [
+    {}
+  ]
+}
+
+### ERROR: Permission email is not valid
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzA5Y2E5YTE3M2Y4MzhlMWMwZTZlMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1Nzc3MjQsImV4cCI6MTYzMTE4MjUyNH0.Nt5GFEL69PJ1qz1r6U_85meimpEyYrphFT4JqxoeWmc
+
+{
+  "name": "Mi control de gastos 7",
+  "permissions": [
+    {
+      "email": "test"
+    }
+  ]
+}
+
+### ERROR: Permission name is not valid
+POST http://localhost:3001/api/expensiveControls
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYzcyNmMzOGFmMzExMjI2ZmIxNjlmMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1NjU4MDcsImV4cCI6MTYzMTE3MDYwN30.Jnn1OSlk13fAWHNxGYxz2mPmj1M6mcJyfNhEZ4KgXcY
+
+{
+  "name": "Mi control de gastos 8",
+  "permissions": [
+    {
+      "email": "hola@gmail.com",
+      "permission": "INVALID"
+    }
+  ]
+}
