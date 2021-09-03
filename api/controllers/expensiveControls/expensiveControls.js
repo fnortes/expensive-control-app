@@ -1,15 +1,13 @@
 const expensiveControlsRouter = require('express').Router()
 const userExtractor = require('../../middlewares/userExtractor')
 const createExpensiveControl = require('./actions/createExpensiveControl')
+const getAllExpensiveControlsByUser = require('./actions/getAllExpensiveControlsByUser')
 
-// expensiveControlsRouter.get('/byUser', userExtractor, async (req, res) => {
-//   // const { userId } = req
-//   const expensiveControls = await ExpensiveControl.find({}).populate('users', {
-//     email: 1,
-//     name: 1
-//   })
-//   res.json(expensiveControls)
-// })
+expensiveControlsRouter.get(
+  '/byUser',
+  userExtractor,
+  getAllExpensiveControlsByUser
+)
 
 // expensiveControlsRouter.get('/:id', async (req, res, next) => {
 //   const { id } = req.params

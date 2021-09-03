@@ -1,7 +1,10 @@
 const { PERMISSIONS } = require('../../../constants')
 const ExpensiveControl = require('../../../models/ExpensiveControl')
 const User = require('../../../models/User')
-const { processPermissions, savePermissionsToUsers } = require('../helpers')
+const {
+  processPermissionsToSave,
+  savePermissionsToUsers
+} = require('../helpers')
 
 const createExpensiveControl = async (req, res, next) => {
   const { name, permissions = [] } = req.body
@@ -23,7 +26,7 @@ const createExpensiveControl = async (req, res, next) => {
   let newPermisions = []
 
   try {
-    newPermisions = await processPermissions(permissions, user.email)
+    newPermisions = await processPermissionsToSave(permissions, user.email)
   } catch (err) {
     const { message: error } = err
     return res.status(400).json({ error })

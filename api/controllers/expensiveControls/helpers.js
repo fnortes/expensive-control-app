@@ -1,7 +1,7 @@
 const { isValidEmail, isValidPermission } = require('../../helpers')
 const User = require('../../models/User')
 
-const processPermissions = (permissions, ownerEmail) =>
+const processPermissionsToSave = (permissions, ownerEmail) =>
   Promise.all(
     permissions
       .filter((permission) => permission.email !== ownerEmail)
@@ -39,4 +39,19 @@ const savePermissionsToUsers = (newPermisions, savedExpensiveControl) => {
     })
 }
 
-module.exports = { processPermissions, savePermissionsToUsers }
+const mapUserExpensiveControls = (expensiveControls) =>
+  expensiveControls.map((expensiveControl) => {
+    const { name } = expensiveControl
+    const { permission, assignedAt } = expensiveControl.permissions[0]
+
+    return {
+      name,
+      permission: { name: permission, assignedAt }
+    }
+  })
+
+module.exports = {
+  processPermissionsToSave,
+  savePermissionsToUsers,
+  mapUserExpensiveControls
+}

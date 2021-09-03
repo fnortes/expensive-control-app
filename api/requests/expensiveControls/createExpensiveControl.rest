@@ -1,10 +1,10 @@
 ### OK With filled permissions array
 POST http://localhost:3001/api/expensiveControls
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzA5Y2E5YTE3M2Y4MzhlMWMwZTZlMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1Nzc3MjQsImV4cCI6MTYzMTE4MjUyNH0.Nt5GFEL69PJ1qz1r6U_85meimpEyYrphFT4JqxoeWmc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzA5Y2U4YTE3M2Y4MzhlMWMwZTZlMSIsImVtYWlsIjoiYWJlbC5ub3J0ZXNAZ21haWwuY29tIiwiaWF0IjoxNjMwNjYyOTQwLCJleHAiOjE2MzEyNjc3NDB9.8Cg4uWgi4zKwQRwlJBQD4iMkzAC-2asmL4T8vmFqQz4
 
 {
-  "name": "Mi control de gastos 11",
+  "name": "Mi control de gastos 1",
   "permissions": [
     {
       "email": "abel.nortes@gmail.com",
@@ -23,7 +23,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMzA5Y2E5YTE3M2Y4MzhlMWMwZTZlMCIsImVtYWlsIjoiZnJhbmNpc2NvLm5vcnRlc0BnbWFpbC5jb20iLCJpYXQiOjE2MzA1Nzc3MjQsImV4cCI6MTYzMTE4MjUyNH0.Nt5GFEL69PJ1qz1r6U_85meimpEyYrphFT4JqxoeWmc
 
 {
-  "name": "Mi control de gastos 1"
+  "name": "Mi control de gastos 2"
 }
 
 ### OK With empty permissions array
