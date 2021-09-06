@@ -1,26 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { List, ListItem, ListItemText, Menu, MenuItem } from '@material-ui/core'
 import useGlobal from 'commons/hooks/useGlobal'
 import { SelectedExpensiveControlWrapper } from './index.styled'
+import { PERMISSIONS } from 'commons/constants/global'
 
 export default function SelectedExpensiveControl() {
   const {
     state: {
       header: {
         selectedExpensiveControl: { index: selectedIndex, anchorEl }
-      }
+      },
+      expensivesControl
     },
     setSelectedExpensiveControlAnchorEl,
     cleanSelectedExpensiveControlAnchorEl,
-    setSelectedExpensiveControl
+    setSelectedExpensiveControl,
+    getAllExpensiveControlsByUser
   } = useGlobal()
 
-  const options = [
-    'Show some love to Material-UI',
-    'Show all notification content',
-    'Hide sensitive notification content',
-    'Hide all notification content'
-  ]
+  useEffect(() => {
+    getAllExpensiveControlsByUser()
+  }, [])
+
+  const options = expensivesControl.map(
+    (item) => `${item.name} - ${PERMISSIONS[item.permission.name]}`
+  )
 
   const handleMenuItemClick = (event, index) => {
     setSelectedExpensiveControl(index)
@@ -57,7 +61,7 @@ export default function SelectedExpensiveControl() {
         {options.map((option, index) => (
           <MenuItem
             key={option}
-            disabled={index === 0}
+            // disabled={index === 0}
             selected={index === selectedIndex}
             onClick={(event) => handleMenuItemClick(event, index)}
           >

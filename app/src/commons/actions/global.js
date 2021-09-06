@@ -64,3 +64,20 @@ export const setSelectedExpensiveControlAnchorElAction = (
     payload
   })
 }
+
+export const expensiveControlsByUserSuccessAction = (
+  expensivesControl,
+  dispatch
+) => {
+  dispatch({
+    type: ACTIONS.EXPENSIVE_CONTROLS_BY_USER_SUCCESS,
+    payload: expensivesControl
+  })
+}
+
+export const expensiveControlsByUserFailureAction = (error, dispatch) => {
+  dispatch({
+    type: ACTIONS.EXPENSIVE_CONTROLS_BY_USER_FAILURE,
+    payload: error
+  })
+}

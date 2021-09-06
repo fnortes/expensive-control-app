@@ -34,7 +34,7 @@ export default function LoginPage() {
           <LockOutlinedIcon />
         </AvatarStyled>
         <Typography component="h1" variant="h5">
-          Iniciar sesión
+          {register ? 'Regístrate' : 'Iniciar sesión'}
         </Typography>
         <LoginForm register={register} />
         <Grid container>

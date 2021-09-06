@@ -19,8 +19,9 @@ export function GlobalContextProvider({ children }) {
 
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
+
       loginSuccessAction(user, dispatch)
-      userService.setToken(user.token)
+
       if (location === '/login') {
         setLocation('/')
       }

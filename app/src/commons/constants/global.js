@@ -17,10 +17,11 @@ export const INITIAL_STATE = {
       }
     },
     selectedExpensiveControl: {
-      index: 1,
+      index: 0,
       anchorEl: null
     }
-  }
+  },
+  expensivesControl: []
 }
 
 export const ACTIONS = {
@@ -36,5 +37,13 @@ export const ACTIONS = {
   UPDATE_SELECTED_EXPENSIVE_CONTROL_INDEX:
     'UPDATE_SELECTED_EXPENSIVE_CONTROL_INDEX',
   UPDATE_SELECTED_EXPENSIVE_CONTROL_ANCHOR_EL:
-    'UPDATE_SELECTED_EXPENSIVE_CONTROL_ANCHOR_EL'
+    'UPDATE_SELECTED_EXPENSIVE_CONTROL_ANCHOR_EL',
+  EXPENSIVE_CONTROLS_BY_USER_SUCCESS: 'EXPENSIVE_CONTROLS_BY_USER_SUCCESS',
+  EXPENSIVE_CONTROLS_BY_USER_FAILURE: 'EXPENSIVE_CONTROLS_BY_USER_FAILURE'
+}
+
+export const PERMISSIONS = {
+  OWNER: 'Propietario',
+  READ: 'Lectura',
+  READ_AND_WRITE: 'Escritura'
 }

@@ -51,6 +51,20 @@ export const reducer = (state, action) => {
 
       return newState
     }
+    case ACTIONS.EXPENSIVE_CONTROLS_BY_USER_SUCCESS:
+      return {
+        ...state,
+        expensivesControl: action.payload,
+        loading: false,
+        error: ''
+      }
+    case ACTIONS.EXPENSIVE_CONTROLS_BY_USER_FAILURE:
+      return {
+        ...state,
+        expensivesControl: INITIAL_STATE.expensivesControl,
+        loading: false,
+        error: action.payload
+      }
     default:
       return state
   }

@@ -3,6 +3,8 @@ import { useLocation } from 'wouter'
 import Context from 'commons/contexts/GlobalContext'
 import {
   endLoadingAction,
+  expensiveControlsByUserFailureAction,
+  expensiveControlsByUserSuccessAction,
   loginFailureAction,
   loginSuccessAction,
   setSelectedExpensiveControlAction,
@@ -13,6 +15,7 @@ import {
   toggleMenuAction
 } from 'commons/actions/global'
 import userService from 'LoginPage/services/user'
+import expensivesControlService from 'HomePage/services/expensivesControl'
 import { INITIAL_STATE } from 'commons/constants/global'
 import {
   DELAY_TO_HIDE_ERROR_MESSAGE,
@@ -31,7 +34,6 @@ export default function useGlobal() {
     window.sessionStorage.setItem(LOCAL_STORAGE_USER_DATA, JSON.stringify(user))
 
     loginSuccessAction(user, dispatch)
-    userService.setToken(user.token)
 
     setLocation('/')
   }
@@ -100,6 +102,21 @@ export default function useGlobal() {
     setSelectedExpensiveControlAnchorElAction(null, dispatch)
   }
 
+  const getAllExpensiveControlsByUser = async () => {
+    startLoading()
+
+    try {
+      const expensivesControl = await expensivesControlService.getExpensiveControlsByUser()
+
+      expensiveControlsByUserSuccessAction(expensivesControl, dispatch)
+    } catch (e) {
+      expensiveControlsByUserFailureAction(
+        'No se ha podido obtener los controles de gastos',
+        dispatch
+      )
+    }
+  }
+
   return {
     state,
     startLoading,
@@ -112,6 +129,7 @@ export default function useGlobal() {
     cleanUserMenuMobileAnchorEl,
     setSelectedExpensiveControl,
     setSelectedExpensiveControlAnchorEl,
-    cleanSelectedExpensiveControlAnchorEl
+    cleanSelectedExpensiveControlAnchorEl,
+    getAllExpensiveControlsByUser
   }
 }

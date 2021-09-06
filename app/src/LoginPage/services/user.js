@@ -1,10 +1,16 @@
 import axios from 'axios'
-import { API_BASE_URL } from 'commons/constants'
+import { API_BASE_URL, LOCAL_STORAGE_USER_DATA } from 'commons/constants'
 
-let token = null
+const getToken = () => {
+  const loggedUserJSON = window.sessionStorage.getItem(LOCAL_STORAGE_USER_DATA)
 
-const setToken = (newToken) => {
-  token = `Bearer ${newToken}`
+  if (loggedUserJSON) {
+    const user = JSON.parse(loggedUserJSON)
+
+    return `Bearer ${user.token}`
+  }
+
+  return null
 }
 
 const login = async (credentials) => {
@@ -17,4 +23,4 @@ const register = async (userData) => {
   return data
 }
 
-export default { login, setToken, register }
+export default { login, getToken, register }
