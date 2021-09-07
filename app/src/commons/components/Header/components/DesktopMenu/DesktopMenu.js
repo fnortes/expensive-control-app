@@ -1,7 +1,7 @@
 import React from 'react'
 import { Badge, IconButton, Menu, MenuItem } from '@material-ui/core'
-import MailIcon from '@material-ui/icons/Mail'
 import AccountCircle from '@material-ui/icons/AccountCircle'
+import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import useGlobal from 'commons/hooks/useGlobal'
 

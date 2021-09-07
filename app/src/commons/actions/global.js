@@ -1,9 +1,7 @@
 import { ACTIONS } from 'commons/constants/global'
 
 export const startLoadingAction = (dispatch) => {
-  dispatch({
-    type: ACTIONS.START_LOADING
-  })
+  dispatch({ type: ACTIONS.START_LOADING })
 }
 
 export const endLoadingAction = (error, dispatch) => {
@@ -80,4 +78,8 @@ export const expensiveControlsByUserFailureAction = (error, dispatch) => {
     type: ACTIONS.EXPENSIVE_CONTROLS_BY_USER_FAILURE,
     payload: error
   })
+}
+
+export const logoutSuccessAction = (dispatch) => {
+  dispatch({ type: ACTIONS.LOGOUT_SUCCESS })
 }

@@ -1,22 +1,22 @@
 import React from 'react'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
-import MenuIcon from '@material-ui/icons/Menu'
+import IconButton from '@material-ui/core/IconButton'
+import Toolbar from '@material-ui/core/Toolbar'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
-import NotificationsIcon from '@material-ui/icons/Notifications'
+import MenuIcon from '@material-ui/icons/Menu'
 import MoreIcon from '@material-ui/icons/MoreVert'
-import SelectedExpensiveControl from './components/SelectedExpensiveControl'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import { HeaderGrowStyled } from 'commons/components/Header/header.styled'
 import useGlobal from 'commons/hooks/useGlobal'
-import { HeaderGrowStyled } from 'commons/components/Header/index.styled'
+import SelectedExpensiveControl from './components/SelectedExpensiveControl/SelectedExpensiveControl'
 import {
   AppBarStyled,
   HeaderMenuButton,
   HeaderTitle,
   SectionDesktop,
   SectionMobile
-} from './index.styled'
+} from './customAppBar.styled'
 
 export default function CustomAppBar() {
   const {

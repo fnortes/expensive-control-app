@@ -1,4 +1,4 @@
-const { isValidEmail, isValidPermission } = require('../../helpers')
+const { isValidEmail, isValidPermission } = require('../users/helpers')
 const User = require('../../models/User')
 
 const processPermissionsToSave = (permissions, ownerEmail) =>
