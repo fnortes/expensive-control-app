@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { PERMISSIONS } = require('./constants')
+const { PERMISSIONS } = require('../../constants')
 
 const buildToken = ({ _id, name, email }) => {
   const userForToken = {

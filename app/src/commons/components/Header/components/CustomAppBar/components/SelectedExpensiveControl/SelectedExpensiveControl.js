@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { List, ListItem, ListItemText, Menu, MenuItem } from '@material-ui/core'
-import useGlobal from 'commons/hooks/useGlobal'
-import { SelectedExpensiveControlWrapper } from './index.styled'
 import { PERMISSIONS } from 'commons/constants/global'
+import useGlobal from 'commons/hooks/useGlobal'
+import { SelectedExpensiveControlWrapper } from './selectedExpensiveControl.styled'
 
 export default function SelectedExpensiveControl() {
   const {

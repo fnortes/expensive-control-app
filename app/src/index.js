@@ -1,8 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
+import { API_BASE_URL } from 'commons/constants'
 import { GlobalContextProvider } from 'commons/contexts/GlobalContext'
+import {
+  onFulfilledRequest,
+  onFulfilledResponse,
+  onRejectedRequest,
+  onRejectedResponse
+} from 'commons/services/interceptors'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+
+axios.defaults.baseURL = API_BASE_URL
+axios.interceptors.request.use(onFulfilledRequest, onRejectedRequest)
+axios.interceptors.response.use(onFulfilledResponse, onRejectedResponse)
 
 ReactDOM.render(
   <React.StrictMode>

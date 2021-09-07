@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Box, Button, CssBaseline, Grid, Typography } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Copyright from 'commons/components/Copyright'
-import LoginForm from './components/LoginForm'
+import Copyright from 'commons/components/Copyright/Copyright'
+import logo from 'logo.png'
+import LoginForm from './components/LoginForm/LoginForm'
 import {
   AvatarStyled,
   GridLinkStyled,
@@ -10,8 +11,7 @@ import {
   LogoStyled,
   PaperStyled,
   RootStyled
-} from './index.styled'
-import logo from 'logo.png'
+} from './loginPage.styled'
 
 export default function LoginPage() {
   const [register, setRegister] = useState(false)

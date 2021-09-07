@@ -7,13 +7,13 @@ import {
   ListItemIcon,
   ListItemText
 } from '@material-ui/core'
-import MailIcon from '@material-ui/icons/Mail'
-import InboxIcon from '@material-ui/icons/MoveToInbox'
+import { useTheme } from '@material-ui/core/styles'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import { useTheme } from '@material-ui/core/styles'
+import MailIcon from '@material-ui/icons/Mail'
+import InboxIcon from '@material-ui/icons/MoveToInbox'
 import useGlobal from 'commons/hooks/useGlobal'
-import { DrawerStyled, DrawerToolbar } from './index.styled'
+import { DrawerStyled, DrawerToolbar } from './drawerMenu.styled'
 
 export default function DrawerMenu() {
   const theme = useTheme()

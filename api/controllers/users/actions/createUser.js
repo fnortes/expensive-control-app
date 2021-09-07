@@ -1,18 +1,8 @@
 const bcrypt = require('bcrypt')
+const User = require('../../../models/User')
 const { buildToken } = require('../helpers')
-const usersRouter = require('express').Router()
-const User = require('../models/User')
 
-usersRouter.get('/', async (req, res) => {
-  const users = await User.find({}).populate('notes', {
-    content: 1,
-    date: 1,
-    important: 1
-  })
-  res.json(users)
-})
-
-usersRouter.post('/', async (req, res) => {
+const createUser = async (req, res) => {
   const { body } = req
   const { email, name, password } = body
 
@@ -32,6 +22,6 @@ usersRouter.post('/', async (req, res) => {
   } catch (error) {
     res.status(400).json(error)
   }
-})
+}
 
-module.exports = usersRouter
+module.exports = createUser

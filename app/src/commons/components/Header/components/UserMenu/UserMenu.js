@@ -12,14 +12,20 @@ export default function UserMenu() {
       }
     },
     cleanUserMenuMobileAnchorEl,
-    cleanUserMenuAnchorEl
+    cleanUserMenuAnchorEl,
+    logout
   } = useGlobal()
 
   const isMenuOpen = Boolean(anchorEl)
 
-  const handleMenuClose = () => {
+  const handleMenuOnClose = () => {
     cleanUserMenuMobileAnchorEl()
     cleanUserMenuAnchorEl()
+  }
+
+  const handleExitOnClick = () => {
+    logout()
+    handleMenuOnClose()
   }
 
   return (
@@ -30,10 +36,10 @@ export default function UserMenu() {
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
-      onClose={handleMenuClose}
+      onClose={handleMenuOnClose}
     >
-      <MenuItem onClick={handleMenuClose}>Mi cuenta</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Salir</MenuItem>
+      <MenuItem onClick={handleMenuOnClose}>Mi cuenta</MenuItem>
+      <MenuItem onClick={handleExitOnClick}>Salir</MenuItem>
     </Menu>
   )
 }

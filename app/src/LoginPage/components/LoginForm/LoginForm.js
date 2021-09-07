@@ -4,7 +4,7 @@ import { useFormik } from 'formik'
 import { Checkbox, FormControlLabel, TextField } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import useGlobal from 'commons/hooks/useGlobal'
-import { FormStyled, SubmitStyled } from './index.styled'
+import { FormStyled, SubmitStyled } from './loginForm.styled'
 
 const loginValidationConfig = {
   email: yup

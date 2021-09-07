@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { useLocation } from 'wouter'
-import Context from 'commons/contexts/GlobalContext'
 import {
   endLoadingAction,
   expensiveControlsByUserFailureAction,
   expensiveControlsByUserSuccessAction,
   loginFailureAction,
   loginSuccessAction,
+  logoutSuccessAction,
   setSelectedExpensiveControlAction,
   setSelectedExpensiveControlAnchorElAction,
   setUserMenuAnchorElAction,
@@ -14,13 +14,12 @@ import {
   startLoadingAction,
   toggleMenuAction
 } from 'commons/actions/global'
-import userService from 'LoginPage/services/user'
-import expensivesControlService from 'HomePage/services/expensivesControl'
+import { DELAY_TO_HIDE_ERROR_MESSAGE } from 'commons/constants'
 import { INITIAL_STATE } from 'commons/constants/global'
-import {
-  DELAY_TO_HIDE_ERROR_MESSAGE,
-  LOCAL_STORAGE_USER_DATA
-} from 'commons/constants'
+import Context from 'commons/contexts/GlobalContext'
+import { requestGetExpensivesControlByUser } from 'commons/services/expensivesControl'
+import { requestLogin, requestRegister } from 'commons/services/user'
+import { deleteUser, saveUser } from 'commons/utils/sessionStorage'
 
 export default function useGlobal() {
   const [, setLocation] = useLocation()
@@ -31,10 +30,8 @@ export default function useGlobal() {
   }
 
   const handleOnGetUserSuccess = (user) => {
-    window.sessionStorage.setItem(LOCAL_STORAGE_USER_DATA, JSON.stringify(user))
-
+    saveUser(user)
     loginSuccessAction(user, dispatch)
-
     setLocation('/')
   }
 
@@ -50,7 +47,7 @@ export default function useGlobal() {
     startLoading()
 
     try {
-      const user = await userService.login({ email, password })
+      const user = await requestLogin({ email, password })
 
       handleOnGetUserSuccess(user)
     } catch (e) {
@@ -62,7 +59,7 @@ export default function useGlobal() {
     startLoading()
 
     try {
-      const user = await userService.register({ email, password, name })
+      const user = await requestRegister({ email, password, name })
 
       handleOnGetUserSuccess(user)
     } catch (e) {
@@ -106,15 +103,21 @@ export default function useGlobal() {
     startLoading()
 
     try {
-      const expensivesControl = await expensivesControlService.getExpensiveControlsByUser()
+      const expensivesControl = await requestGetExpensivesControlByUser()
 
       expensiveControlsByUserSuccessAction(expensivesControl, dispatch)
     } catch (e) {
       expensiveControlsByUserFailureAction(
-        'No se ha podido obtener los controles de gastos',
+        'No se han podido obtener los controles de gastos',
         dispatch
       )
     }
+  }
+
+  const logout = () => {
+    deleteUser()
+    logoutSuccessAction(dispatch)
+    setLocation('/login')
   }
 
   return {
@@ -130,6 +133,7 @@ export default function useGlobal() {
     setSelectedExpensiveControl,
     setSelectedExpensiveControlAnchorEl,
     cleanSelectedExpensiveControlAnchorEl,
-    getAllExpensiveControlsByUser
+    getAllExpensiveControlsByUser,
+    logout
   }
 }

@@ -7,11 +7,18 @@ export const reducer = (state, action) => {
     case ACTIONS.END_LOADING:
       return { ...state, loading: false, error: action.payload }
     case ACTIONS.LOGIN_SUCCESS:
-      return { ...state, user: action.payload, loading: false, error: '' }
+      return {
+        ...state,
+        user: action.payload,
+        expensivesControl: INITIAL_STATE.expensivesControl,
+        loading: false,
+        error: ''
+      }
     case ACTIONS.LOGIN_FAILURE:
       return {
         ...state,
         user: INITIAL_STATE.user,
+        expensivesControl: INITIAL_STATE.expensivesControl,
         loading: false,
         error: action.payload
       }
@@ -64,6 +71,14 @@ export const reducer = (state, action) => {
         expensivesControl: INITIAL_STATE.expensivesControl,
         loading: false,
         error: action.payload
+      }
+    case ACTIONS.LOGOUT_SUCCESS:
+      return {
+        ...state,
+        user: INITIAL_STATE.user,
+        expensivesControl: INITIAL_STATE.expensivesControl,
+        loading: false,
+        error: ''
       }
     default:
       return state

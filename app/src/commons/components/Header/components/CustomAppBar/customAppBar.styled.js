@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { AppBar, IconButton, Typography } from '@material-ui/core'
-import { drawerWidth } from '../DrawerMenu/index.styled'
+import { drawerWidth } from '../DrawerMenu/drawerMenu.styled'
 
 export const AppBarStyled = styled(AppBar)`
   ${({ theme }) => `

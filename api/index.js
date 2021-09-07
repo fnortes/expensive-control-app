@@ -9,8 +9,7 @@ const cors = require('cors')
 const notFound = require('./middlewares/notFound')
 const errorHandler = require('./middlewares/errorHandler')
 
-const usersRouter = require('./controllers/users')
-const loginRouter = require('./controllers/login')
+const usersRouter = require('./controllers/users/users')
 const expensiveControlsRouter = require('./controllers/expensiveControls/expensiveControls')
 
 app.use(cors())
@@ -20,7 +19,6 @@ app.use(express.static('../app/build'))
 // app.use(logger)
 
 app.use('/api/users', usersRouter)
-app.use('/api/login', loginRouter)
 app.use('/api/expensiveControls', expensiveControlsRouter)
 
 if (process.env.NODE_ENV === 'test') {

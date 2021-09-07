@@ -1,15 +1,15 @@
 import React from 'react'
 import { useRoute } from 'wouter'
 import { ThemeProvider } from 'styled-components'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import {
   StylesProvider,
   ThemeProvider as MuiThemeProvider
 } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { customTheme } from 'styles'
-import Header from 'commons/components/Header'
 import { MainWrapper } from 'app.styled'
+import Header from 'commons/components/Header/Header'
 import Routes from 'routes'
+import { customTheme } from 'styles'
 
 export default function App() {
   console.log('Renderiza la APP')
