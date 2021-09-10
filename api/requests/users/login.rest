@@ -5,3 +5,12 @@ Content-Type: application/json
   "email": "francisco.nortes@gmail.com",
   "password": "Fn485517"
 }
+
+### 
+POST https://expensive-control-app.herokuapp.com/api/users/login
+Content-Type: application/json
+
+{
+  "email": "francisco.nortes@gmail.com",
+  "password": "Fn485517"
+}

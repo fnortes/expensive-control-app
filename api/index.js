@@ -2,6 +2,7 @@ require('dotenv').config()
 require('./mongo')
 
 const express = require('express')
+const path = require('path')
 const app = express()
 const cors = require('cors')
 
@@ -14,7 +15,6 @@ const expensiveControlsRouter = require('./controllers/expensiveControls/expensi
 
 app.use(cors())
 app.use(express.json())
-app.use(express.static('../app/build'))
 
 // app.use(logger)
 
@@ -28,8 +28,14 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 app.use(errorHandler)
-
 app.use(notFound)
+
+const appDir = path.resolve(__dirname, '../app/build')
+app.use(express.static(appDir))
+
+app.get('*', function (_req, res) {
+  res.sendFile(path.resolve(appDir, 'index.html'))
+})
 
 const PORT = process.env.PORT
 
