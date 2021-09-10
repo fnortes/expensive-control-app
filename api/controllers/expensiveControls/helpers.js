@@ -1,5 +1,7 @@
 const { isValidEmail, isValidPermission } = require('../users/helpers')
 const User = require('../../models/User')
+const Notification = require('../../models/Notification')
+const { PERMISSIONS, PERMISSIONS_TRANSLATIONS } = require('../../constants')
 
 const processPermissionsToSave = (permissions, ownerEmail) =>
   Promise.all(
@@ -36,6 +38,21 @@ const savePermissionsToUsers = (newPermisions, savedExpensiveControl) => {
       permissionUser.expensiveControls.push(savedExpensiveControl._id)
 
       await permissionUser.save()
+
+      if (permission.permission !== PERMISSIONS[2]) {
+        const newNotification = new Notification({
+          message: `Tienes acceso al nuevo control de gastos ${
+            savedExpensiveControl.name
+          } con el permiso de ${
+            PERMISSIONS_TRANSLATIONS[permission.permission]
+          }`,
+          userId: permission.userId,
+          read: false,
+          createdAt: new Date().toISOString()
+        })
+
+        await newNotification.save()
+      }
     })
 }
 
