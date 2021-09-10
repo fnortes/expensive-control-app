@@ -12,6 +12,7 @@ const errorHandler = require('./middlewares/errorHandler')
 
 const usersRouter = require('./controllers/users/users')
 const expensiveControlsRouter = require('./controllers/expensiveControls/expensiveControls')
+const notificationsRouter = require('./controllers/notifications/notifications')
 
 app.use(cors())
 app.use(express.json())
@@ -20,6 +21,7 @@ app.use(express.json())
 
 app.use('/api/users', usersRouter)
 app.use('/api/expensiveControls', expensiveControlsRouter)
+app.use('/api/notifications', notificationsRouter)
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')

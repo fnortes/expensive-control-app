@@ -15,6 +15,7 @@ notificationSchema.set('toJSON', {
     returnedObject.id = document._id
     delete returnedObject._id
     delete returnedObject.__v
+    delete returnedObject.userId
   }
 })
 
