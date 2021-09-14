@@ -4,8 +4,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle'
 import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import useGlobal from 'commons/hooks/useGlobal'
+import { useLocation } from 'wouter'
 
 export default function DesktopMenu() {
+  const [, setLocation] = useLocation()
+
   const {
     state: {
       header: {
@@ -15,10 +18,19 @@ export default function DesktopMenu() {
       }
     },
     cleanUserMenuMobileAnchorEl,
-    setUserMenuAnchorEl
+    cleanUserMenuAnchorEl,
+    setUserMenuAnchorEl,
+    toggleMenu
   } = useGlobal()
 
   const isMobileMenuOpen = Boolean(anchorEl)
+
+  const handleNotificationsOnClick = () => {
+    setLocation('/notifications')
+    cleanUserMenuMobileAnchorEl()
+    cleanUserMenuAnchorEl()
+    toggleMenu(false)
+  }
 
   return (
     <Menu
@@ -38,7 +50,7 @@ export default function DesktopMenu() {
         </IconButton>
         <p>Emails</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={handleNotificationsOnClick}>
         <IconButton aria-label="Ver 11 nuevas notificaciones" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />

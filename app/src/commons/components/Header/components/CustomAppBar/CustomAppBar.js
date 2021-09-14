@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation } from 'wouter'
 import Badge from '@material-ui/core/Badge'
 import IconButton from '@material-ui/core/IconButton'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -19,6 +20,8 @@ import {
 } from './customAppBar.styled'
 
 export default function CustomAppBar() {
+  const [, setLocation] = useLocation()
+
   const {
     state: {
       header: {
@@ -36,6 +39,11 @@ export default function CustomAppBar() {
 
   const handleDrawerOpen = () => {
     toggleMenu(true)
+  }
+
+  const handleNotificationsOnClick = () => {
+    setLocation('/notifications')
+    toggleMenu(false)
   }
 
   return (
@@ -61,7 +69,11 @@ export default function CustomAppBar() {
               <MailIcon />
             </Badge>
           </IconButton>
-          <IconButton aria-label="Ver 17 nuevas notificaciones" color="inherit">
+          <IconButton
+            aria-label="Ver 17 nuevas notificaciones"
+            color="inherit"
+            onClick={handleNotificationsOnClick}
+          >
             <Badge badgeContent={17} color="secondary">
               <NotificationsIcon />
             </Badge>

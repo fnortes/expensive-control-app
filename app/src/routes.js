@@ -2,13 +2,11 @@ import React, { Suspense } from 'react'
 import { Route, Switch } from 'wouter'
 import Spinner from 'commons/components/Spinner/Spinner'
 
-// Load Home page in lazy mode.
 const LazyHome = React.lazy(() => import('HomePage/HomePage'))
-
-// Load login page in lazy mode.
+const LazyNotifications = React.lazy(() =>
+  import('NotificationsPage/NotificationsPage')
+)
 const LazyLogin = React.lazy(() => import('LoginPage/LoginPage'))
-
-// Load error page in lazy mode.
 const LazyError = React.lazy(() => import('ErrorPage/ErrorPage'))
 
 export default function Routes() {
@@ -17,6 +15,7 @@ export default function Routes() {
       <Spinner />
       <Switch>
         <Route component={LazyHome} path="/" />
+        <Route component={LazyNotifications} path="/notifications" />
         <Route component={LazyLogin} path="/login" />
         <Route component={LazyError} />
       </Switch>
