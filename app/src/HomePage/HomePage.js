@@ -1,14 +1,13 @@
 import React from 'react'
-import { Link as LinkRouter } from 'wouter'
-import { Link } from '@material-ui/core'
+import CustomLink from 'commons/components/CustomLink/CustomLink'
 
 export default function HomePage() {
   return (
     <div>
       Home page{' '}
-      <LinkRouter to="/error">
-        <Link color="secondary">Error Page</Link>
-      </LinkRouter>
+      <CustomLink to="/error" color="secondary">
+        Error Page
+      </CustomLink>
     </div>
   )
 }
